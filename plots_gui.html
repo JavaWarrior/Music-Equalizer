@@ -1,0 +1,362 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>plots_gui</title><meta name="generator" content="MATLAB 7.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-01-26"><meta name="DC.source" content="plots_gui.m"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="keyword">function</span> varargout = plots_gui(varargin)
+<span class="comment">% PLOTS_GUI MATLAB code for plots_gui.fig</span>
+<span class="comment">%      PLOTS_GUI, by itself, creates a new PLOTS_GUI or raises the existing</span>
+<span class="comment">%      singleton*.</span>
+<span class="comment">%</span>
+<span class="comment">%      H = PLOTS_GUI returns the handle to a new PLOTS_GUI or the handle to</span>
+<span class="comment">%      the existing singleton*.</span>
+<span class="comment">%</span>
+<span class="comment">%      PLOTS_GUI('CALLBACK',hObject,eventData,handles,...) calls the local</span>
+<span class="comment">%      function named CALLBACK in PLOTS_GUI.M with the given input arguments.</span>
+<span class="comment">%</span>
+<span class="comment">%      PLOTS_GUI('Property','Value',...) creates a new PLOTS_GUI or raises the</span>
+<span class="comment">%      existing singleton*.  Starting from the left, property value pairs are</span>
+<span class="comment">%      applied to the GUI before plots_gui_OpeningFcn gets called.  An</span>
+<span class="comment">%      unrecognized property name or invalid value makes property application</span>
+<span class="comment">%      stop.  All inputs are passed to plots_gui_OpeningFcn via varargin.</span>
+<span class="comment">%</span>
+<span class="comment">%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one</span>
+<span class="comment">%      instance to run (singleton)".</span>
+<span class="comment">%</span>
+<span class="comment">% See also: GUIDE, GUIDATA, GUIHANDLES</span>
+
+<span class="comment">% Edit the above text to modify the response to help plots_gui</span>
+
+<span class="comment">% Last Modified by GUIDE v2.5 26-Jan-2016 19:52:04</span>
+
+<span class="comment">% Begin initialization code - DO NOT EDIT</span>
+gui_Singleton = 1;
+gui_State = struct(<span class="string">'gui_Name'</span>,       mfilename, <span class="keyword">...</span>
+                   <span class="string">'gui_Singleton'</span>,  gui_Singleton, <span class="keyword">...</span>
+                   <span class="string">'gui_OpeningFcn'</span>, @plots_gui_OpeningFcn, <span class="keyword">...</span>
+                   <span class="string">'gui_OutputFcn'</span>,  @plots_gui_OutputFcn, <span class="keyword">...</span>
+                   <span class="string">'gui_LayoutFcn'</span>,  [] , <span class="keyword">...</span>
+                   <span class="string">'gui_Callback'</span>,   []);
+<span class="keyword">if</span> nargin &amp;&amp; ischar(varargin{1})
+    gui_State.gui_Callback = str2func(varargin{1});
+<span class="keyword">end</span>
+
+<span class="keyword">if</span> nargout
+    [varargout{1:nargout}] = gui_mainfcn(gui_State, varargin{:});
+<span class="keyword">else</span>
+    gui_mainfcn(gui_State, varargin{:});
+<span class="keyword">end</span>
+<span class="comment">% End initialization code - DO NOT EDIT</span>
+
+
+<span class="comment">% --- Executes just before plots_gui is made visible.</span>
+<span class="keyword">function</span> plots_gui_OpeningFcn(hObject, eventdata, handles, varargin)
+<span class="comment">% This function has no output args, see OutputFcn.</span>
+<span class="comment">% hObject    handle to figure</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+<span class="comment">% varargin   command line arguments to plots_gui (see VARARGIN)</span>
+
+<span class="comment">% Choose default command line output for plots_gui</span>
+handles.output = hObject;
+
+<span class="comment">% Update handles structure</span>
+guidata(hObject, handles);
+
+<span class="comment">% UIWAIT makes plots_gui wait for user response (see UIRESUME)</span>
+<span class="comment">% uiwait(handles.figure1);</span>
+
+
+<span class="comment">% --- Outputs from this function are returned to the command line.</span>
+<span class="keyword">function</span> varargout = plots_gui_OutputFcn(hObject, eventdata, handles)
+<span class="comment">% varargout  cell array for returning output args (see VARARGOUT);</span>
+<span class="comment">% hObject    handle to figure</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="comment">% Get default command line output from handles structure</span>
+varargout{1} = handles.output;
+
+
+<span class="comment">% --- Executes on selection change in menu_band.</span>
+<span class="keyword">function</span> menu_band_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to menu_band (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="comment">% Hints: contents = cellstr(get(hObject,'String')) returns menu_band contents as cell array</span>
+<span class="comment">%        contents{get(hObject,'Value')} returns selected item from menu_band</span>
+<span class="keyword">global</span> Fs arr_global ;
+<span class="keyword">if</span>(isempty(arr_global))
+    <span class="keyword">return</span>;
+<span class="keyword">end</span>
+<span class="keyword">if</span>(get(hObject,<span class="string">'value'</span>) == 10)
+    output = arr_global{1};
+    <span class="keyword">for</span> i = 2:9
+        output = output + arr_global{i};
+    <span class="keyword">end</span>
+	plot_in_gui2(handles,output,Fs);
+<span class="keyword">else</span>
+    plot_in_gui2(handles,arr_global{get(hObject,<span class="string">'value'</span>)},Fs);
+<span class="keyword">end</span>
+
+<span class="comment">% --- Executes during object creation, after setting all properties.</span>
+<span class="keyword">function</span> menu_band_CreateFcn(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to menu_band (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    empty - handles not created until after all CreateFcns called</span>
+
+<span class="comment">% Hint: popupmenu controls usually have a white background on Windows.</span>
+<span class="comment">%       See ISPC and COMPUTER.</span>
+<span class="keyword">if</span> ispc &amp;&amp; isequal(get(hObject,<span class="string">'BackgroundColor'</span>), get(0,<span class="string">'defaultUicontrolBackgroundColor'</span>))
+    set(hObject,<span class="string">'BackgroundColor'</span>,<span class="string">'white'</span>);
+<span class="keyword">end</span>
+
+
+<span class="comment">% --- Executes on button press in check_imp.</span>
+<span class="keyword">function</span> check_imp_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to check_imp (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="comment">% Hint: get(hObject,'Value') returns toggle state of check_imp</span>
+
+<span class="comment">%-------plots sound</span>
+<span class="keyword">function</span> plot_in_gui2(handles,output,Fs)
+Nsamps = length(output);
+t = (1/Fs)*(1:Nsamps);          <span class="comment">%Prepare time data for plot</span>
+
+axes(handles.axes1);
+plot(t, output);
+xlim([0 1/Fs*Nsamps]);
+
+<span class="comment">%frequency response</span>
+<span class="comment">%y_fft_pure = fft(output);</span>
+y_fft = fft(output);
+<span class="comment">%%y_fft = fftshift(y_fft_pure);</span>
+<span class="comment">%f = Fs*(0:Nsamps-1)/Nsamps*2;</span>
+y_fft = y_fft(1:Nsamps/2);      <span class="comment">%Discard Half of Points</span>
+f = Fs*(0:Nsamps/2-1)/Nsamps;   <span class="comment">%Prepare freq data for plot</span>
+<span class="comment">%magnitude</span>
+axes(handles.axes2);
+
+plot(f, abs(y_fft));
+<span class="comment">%%xlim([0 max(y_fft)]);</span>
+xlim([0 20000]);
+<span class="comment">%angle</span>
+axes(handles.axes3);
+y_fft = angle(y_fft);
+plot(f, y_fft);
+<span class="comment">%%xlim([0 max(y_fft)]);</span>
+xlim([0 20000]);
+</pre><img vspace="5" hspace="5" src="plots_gui_files/plots_gui_01.png" alt=""> <p class="footer"><br>
+      Published with MATLAB&reg; 7.12<br></p></div><!--
+##### SOURCE BEGIN #####
+function varargout = plots_gui(varargin)
+% PLOTS_GUI MATLAB code for plots_gui.fig
+%      PLOTS_GUI, by itself, creates a new PLOTS_GUI or raises the existing
+%      singleton*.
+%
+%      H = PLOTS_GUI returns the handle to a new PLOTS_GUI or the handle to
+%      the existing singleton*.
+%
+%      PLOTS_GUI('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in PLOTS_GUI.M with the given input arguments.
+%
+%      PLOTS_GUI('Property','Value',...) creates a new PLOTS_GUI or raises the
+%      existing singleton*.  Starting from the left, property value pairs are
+%      applied to the GUI before plots_gui_OpeningFcn gets called.  An
+%      unrecognized property name or invalid value makes property application
+%      stop.  All inputs are passed to plots_gui_OpeningFcn via varargin.
+%
+%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
+%      instance to run (singleton)".
+%
+% See also: GUIDE, GUIDATA, GUIHANDLES
+
+% Edit the above text to modify the response to help plots_gui
+
+% Last Modified by GUIDE v2.5 26-Jan-2016 19:52:04
+
+% Begin initialization code - DO NOT EDIT
+gui_Singleton = 1;
+gui_State = struct('gui_Name',       mfilename, ...
+                   'gui_Singleton',  gui_Singleton, ...
+                   'gui_OpeningFcn', @plots_gui_OpeningFcn, ...
+                   'gui_OutputFcn',  @plots_gui_OutputFcn, ...
+                   'gui_LayoutFcn',  [] , ...
+                   'gui_Callback',   []);
+if nargin && ischar(varargin{1})
+    gui_State.gui_Callback = str2func(varargin{1});
+end
+
+if nargout
+    [varargout{1:nargout}] = gui_mainfcn(gui_State, varargin{:});
+else
+    gui_mainfcn(gui_State, varargin{:});
+end
+% End initialization code - DO NOT EDIT
+
+
+% REPLACE_WITH_DASH_DASH- Executes just before plots_gui is made visible.
+function plots_gui_OpeningFcn(hObject, eventdata, handles, varargin)
+% This function has no output args, see OutputFcn.
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+% varargin   command line arguments to plots_gui (see VARARGIN)
+
+% Choose default command line output for plots_gui
+handles.output = hObject;
+
+% Update handles structure
+guidata(hObject, handles);
+
+% UIWAIT makes plots_gui wait for user response (see UIRESUME)
+% uiwait(handles.figure1);
+
+
+% REPLACE_WITH_DASH_DASH- Outputs from this function are returned to the command line.
+function varargout = plots_gui_OutputFcn(hObject, eventdata, handles) 
+% varargout  cell array for returning output args (see VARARGOUT);
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Get default command line output from handles structure
+varargout{1} = handles.output;
+
+
+% REPLACE_WITH_DASH_DASH- Executes on selection change in menu_band.
+function menu_band_Callback(hObject, eventdata, handles)
+% hObject    handle to menu_band (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: contents = cellstr(get(hObject,'String')) returns menu_band contents as cell array
+%        contents{get(hObject,'Value')} returns selected item from menu_band
+global Fs arr_global ;
+if(isempty(arr_global))
+    return;
+end
+if(get(hObject,'value') == 10)
+    output = arr_global{1};
+    for i = 2:9
+        output = output + arr_global{i};
+    end
+	plot_in_gui2(handles,output,Fs);
+else   
+    plot_in_gui2(handles,arr_global{get(hObject,'value')},Fs);
+end
+
+% REPLACE_WITH_DASH_DASH- Executes during object creation, after setting all properties.
+function menu_band_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to menu_band (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: popupmenu controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% REPLACE_WITH_DASH_DASH- Executes on button press in check_imp.
+function check_imp_Callback(hObject, eventdata, handles)
+% hObject    handle to check_imp (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of check_imp
+
+%REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-plots sound 
+function plot_in_gui2(handles,output,Fs)
+Nsamps = length(output);
+t = (1/Fs)*(1:Nsamps);          %Prepare time data for plot
+
+axes(handles.axes1);
+plot(t, output);
+xlim([0 1/Fs*Nsamps]);
+
+%frequency response
+%y_fft_pure = fft(output);
+y_fft = fft(output);
+%%y_fft = fftshift(y_fft_pure);
+%f = Fs*(0:Nsamps-1)/Nsamps*2;
+y_fft = y_fft(1:Nsamps/2);      %Discard Half of Points
+f = Fs*(0:Nsamps/2-1)/Nsamps;   %Prepare freq data for plot
+%magnitude
+axes(handles.axes2);
+
+plot(f, abs(y_fft));
+%%xlim([0 max(y_fft)]);
+xlim([0 20000]);
+%angle
+axes(handles.axes3);
+y_fft = angle(y_fft);
+plot(f, y_fft);
+%%xlim([0 max(y_fft)]);
+xlim([0 20000]);
+
+##### SOURCE END #####
+--></body></html>

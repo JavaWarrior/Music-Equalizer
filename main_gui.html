@@ -1,0 +1,1617 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>main_gui</title><meta name="generator" content="MATLAB 7.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-01-26"><meta name="DC.source" content="main_gui.m"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="keyword">function</span> varargout = main_gui(varargin)
+<span class="comment">% MAIN_GUI MATLAB code for main_gui.fig</span>
+<span class="comment">%      MAIN_GUI, by itself, creates a new MAIN_GUI or raises the existing</span>
+<span class="comment">%      singleton*.</span>
+<span class="comment">%</span>
+<span class="comment">%      H = MAIN_GUI returns the handle to a new MAIN_GUI or the handle to</span>
+<span class="comment">%      the existing singleton*.</span>
+<span class="comment">%</span>
+<span class="comment">%      MAIN_GUI('CALLBACK',hObject,eventData,handles,...) calls the local</span>
+<span class="comment">%      function named CALLBACK in MAIN_GUI.M with the given input arguments.</span>
+<span class="comment">%</span>
+<span class="comment">%      MAIN_GUI('Property','Value',...) creates a new MAIN_GUI or raises the</span>
+<span class="comment">%      existing singleton*.  Starting from the left, property value pairs are</span>
+<span class="comment">%      applied to the GUI before main_gui_OpeningFcn gets called.  An</span>
+<span class="comment">%      unrecognized property name or invalid value makes property application</span>
+<span class="comment">%      stop.  All inputs are passed to main_gui_OpeningFcn via varargin.</span>
+<span class="comment">%</span>
+<span class="comment">%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one</span>
+<span class="comment">%      instance to run (singleton)".</span>
+<span class="comment">%</span>
+<span class="comment">% See also: GUIDE, GUIDATA, GUIHANDLES</span>
+
+<span class="comment">% Edit the above text to modify the response to help main_gui</span>
+
+<span class="comment">% Last Modified by GUIDE v2.5 26-Jan-2016 00:52:47</span>
+
+<span class="comment">% Begin initialization code - DO NOT EDIT</span>
+gui_Singleton = 1;
+gui_State = struct(<span class="string">'gui_Name'</span>,       mfilename, <span class="keyword">...</span>
+                   <span class="string">'gui_Singleton'</span>,  gui_Singleton, <span class="keyword">...</span>
+                   <span class="string">'gui_OpeningFcn'</span>, @main_gui_OpeningFcn, <span class="keyword">...</span>
+                   <span class="string">'gui_OutputFcn'</span>,  @main_gui_OutputFcn, <span class="keyword">...</span>
+                   <span class="string">'gui_LayoutFcn'</span>,  [] , <span class="keyword">...</span>
+                   <span class="string">'gui_Callback'</span>,   []);
+<span class="keyword">if</span> nargin &amp;&amp; ischar(varargin{1})
+    gui_State.gui_Callback = str2func(varargin{1});
+<span class="keyword">end</span>
+
+<span class="keyword">if</span> nargout
+    [varargout{1:nargout}] = gui_mainfcn(gui_State, varargin{:});
+<span class="keyword">else</span>
+    gui_mainfcn(gui_State, varargin{:});
+<span class="keyword">end</span>
+<span class="comment">% End initialization code - DO NOT EDIT</span>
+
+
+<span class="comment">% --- Executes just before main_gui is made visible.</span>
+<span class="keyword">function</span> main_gui_OpeningFcn(hObject, eventdata, handles, varargin)
+<span class="comment">% This function has no output args, see OutputFcn.</span>
+<span class="comment">% hObject    handle to figure</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+<span class="comment">% varargin   command line arguments to main_gui (see VARARGIN)</span>
+
+<span class="comment">% Choose default command line output for main_gui</span>
+handles.output = hObject;
+
+<span class="comment">% Update handles structure</span>
+guidata(hObject, handles);
+
+<span class="comment">% UIWAIT makes main_gui wait for user response (see UIRESUME)</span>
+<span class="comment">% uiwait(handles.figure1);</span>
+
+
+<span class="comment">% --- Outputs from this function are returned to the command line.</span>
+<span class="keyword">function</span> varargout = main_gui_OutputFcn(hObject, eventdata, handles)
+<span class="comment">% varargout  cell array for returning output args (see VARARGOUT);</span>
+<span class="comment">% hObject    handle to figure</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="comment">% Get default command line output from handles structure</span>
+varargout{1} = handles.output;
+
+
+
+<span class="comment">% --- Executes on selection change in menu_iir.</span>
+<span class="keyword">function</span> menu_iir_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to menu_iir (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="comment">% Hints: contents = cellstr(get(hObject,'String')) returns menu_iir contents as cell array</span>
+<span class="comment">%        contents{get(hObject,'Value')} returns selected item from menu_iir</span>
+
+
+<span class="comment">% --- Executes during object creation, after setting all properties.</span>
+<span class="keyword">function</span> menu_iir_CreateFcn(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to menu_iir (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    empty - handles not created until after all CreateFcns called</span>
+
+<span class="comment">% Hint: popupmenu controls usually have a white background on Windows.</span>
+<span class="comment">%       See ISPC and COMPUTER.</span>
+<span class="keyword">if</span> ispc &amp;&amp; isequal(get(hObject,<span class="string">'BackgroundColor'</span>), get(0,<span class="string">'defaultUicontrolBackgroundColor'</span>))
+    set(hObject,<span class="string">'BackgroundColor'</span>,<span class="string">'white'</span>);
+<span class="keyword">end</span>
+
+
+
+
+<span class="comment">% --- Executes on selection change in menu_fir.</span>
+<span class="keyword">function</span> menu_fir_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to menu_fir (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="comment">% Hints: contents = cellstr(get(hObject,'String')) returns menu_fir contents as cell array</span>
+<span class="comment">%        contents{get(hObject,'Value')} returns selected item from menu_fir</span>
+
+
+<span class="comment">% --- Executes during object creation, after setting all properties.</span>
+<span class="keyword">function</span> menu_fir_CreateFcn(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to menu_fir (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    empty - handles not created until after all CreateFcns called</span>
+
+<span class="comment">% Hint: popupmenu controls usually have a white background on Windows.</span>
+<span class="comment">%       See ISPC and COMPUTER.</span>
+<span class="keyword">if</span> ispc &amp;&amp; isequal(get(hObject,<span class="string">'BackgroundColor'</span>), get(0,<span class="string">'defaultUicontrolBackgroundColor'</span>))
+    set(hObject,<span class="string">'BackgroundColor'</span>,<span class="string">'white'</span>);
+<span class="keyword">end</span>
+
+
+
+<span class="keyword">function</span> txt_file_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to txt_file (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="comment">% Hints: get(hObject,'String') returns contents of txt_file as text</span>
+<span class="comment">%        str2double(get(hObject,'String')) returns contents of txt_file as a double</span>
+
+
+<span class="comment">% --- Executes during object creation, after setting all properties.</span>
+<span class="keyword">function</span> txt_file_CreateFcn(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to txt_file (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    empty - handles not created until after all CreateFcns called</span>
+
+<span class="comment">% Hint: edit controls usually have a white background on Windows.</span>
+<span class="comment">%       See ISPC and COMPUTER.</span>
+<span class="keyword">if</span> ispc &amp;&amp; isequal(get(hObject,<span class="string">'BackgroundColor'</span>), get(0,<span class="string">'defaultUicontrolBackgroundColor'</span>))
+    set(hObject,<span class="string">'BackgroundColor'</span>,<span class="string">'white'</span>);
+<span class="keyword">end</span>
+
+
+<span class="comment">% --- Executes on button press in btn_browse.</span>
+<span class="keyword">function</span> btn_browse_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to btn_browse (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+<span class="comment">%get input file name</span>
+<span class="keyword">global</span> FS_input;
+[filename,filepath] = uigetfile(<span class="string">'*.wav'</span>,<span class="string">'Select the wave file'</span>);
+filename = strcat(filepath,filename);
+set(handles.txt_file,<span class="string">'string'</span>,filename);
+<span class="keyword">if</span>(~isempty(filename))
+    set(handles.menu_display,<span class="string">'value'</span>,1);
+    [y,Fs] = wavread(filename);
+    FS_input = Fs;
+    set(handles.txt_fs,<span class="string">'string'</span>,Fs);
+<span class="keyword">end</span>
+changeOutput(handles);              <span class="comment">%calc the new output signal</span>
+
+<span class="comment">% --- Executes on button press in btn_play.</span>
+<span class="keyword">function</span> btn_play_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to btn_play (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+<span class="comment">%calc the output signal after play butting is pressed</span>
+changeOutput(handles);
+<span class="keyword">global</span> output2 output1 Fs;
+wavplay(output1,Fs,<span class="string">'async'</span>);        <span class="comment">%play output signal (with gain)</span>
+
+<span class="comment">% --- Executes on button press in btn_stop.</span>
+<span class="keyword">function</span> btn_stop_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to btn_stop (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+clear <span class="string">playsnd</span>;                      <span class="comment">%stop the output signal</span>
+
+<span class="comment">% --- Executes on button press in btn_save.</span>
+<span class="keyword">function</span> btn_save_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to btn_save (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+[FileName,PathName] = uiputfile;    <span class="comment">%get the selected file name and path</span>
+<span class="keyword">global</span> output1 Fs;
+wavWrite(output1,Fs,strcat(PathName,FileName)); <span class="comment">%store output in a wav file</span>
+
+<span class="comment">% --- Executes on slider movement.</span>
+<span class="keyword">function</span> slider1_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to slider1 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="comment">% Hints: get(hObject,'Value') returns position of slider</span>
+<span class="comment">%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider</span>
+changeOutput(handles);
+
+
+
+<span class="comment">% --- Executes during object creation, after setting all properties.</span>
+<span class="keyword">function</span> slider1_CreateFcn(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to slider1 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    empty - handles not created until after all CreateFcns called</span>
+
+<span class="comment">% Hint: slider controls usually have a light gray background.</span>
+<span class="keyword">if</span> isequal(get(hObject,<span class="string">'BackgroundColor'</span>), get(0,<span class="string">'defaultUicontrolBackgroundColor'</span>))
+    set(hObject,<span class="string">'BackgroundColor'</span>,[.9 .9 .9]);
+<span class="keyword">end</span>
+
+
+<span class="comment">% --- Executes on slider movement.</span>
+<span class="keyword">function</span> slider2_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to slider2 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="comment">% Hints: get(hObject,'Value') returns position of slider</span>
+<span class="comment">%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider</span>
+changeOutput(handles);
+
+<span class="comment">% --- Executes during object creation, after setting all properties.</span>
+<span class="keyword">function</span> slider2_CreateFcn(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to slider2 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    empty - handles not created until after all CreateFcns called</span>
+
+<span class="comment">% Hint: slider controls usually have a light gray background.</span>
+<span class="keyword">if</span> isequal(get(hObject,<span class="string">'BackgroundColor'</span>), get(0,<span class="string">'defaultUicontrolBackgroundColor'</span>))
+    set(hObject,<span class="string">'BackgroundColor'</span>,[.9 .9 .9]);
+<span class="keyword">end</span>
+
+
+<span class="comment">% --- Executes on slider movement.</span>
+<span class="keyword">function</span> slider3_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to slider3 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="comment">% Hints: get(hObject,'Value') returns position of slider</span>
+<span class="comment">%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider</span>
+changeOutput(handles);
+
+<span class="comment">% --- Executes during object creation, after setting all properties.</span>
+<span class="keyword">function</span> slider3_CreateFcn(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to slider3 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    empty - handles not created until after all CreateFcns called</span>
+
+<span class="comment">% Hint: slider controls usually have a light gray background.</span>
+<span class="keyword">if</span> isequal(get(hObject,<span class="string">'BackgroundColor'</span>), get(0,<span class="string">'defaultUicontrolBackgroundColor'</span>))
+    set(hObject,<span class="string">'BackgroundColor'</span>,[.9 .9 .9]);
+<span class="keyword">end</span>
+
+
+<span class="comment">% --- Executes on slider movement.</span>
+<span class="keyword">function</span> slider5_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to slider5 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="comment">% Hints: get(hObject,'Value') returns position of slider</span>
+<span class="comment">%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider</span>
+changeOutput(handles);
+
+
+<span class="comment">% --- Executes during object creation, after setting all properties.</span>
+<span class="keyword">function</span> slider5_CreateFcn(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to slider5 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    empty - handles not created until after all CreateFcns called</span>
+
+<span class="comment">% Hint: slider controls usually have a light gray background.</span>
+<span class="keyword">if</span> isequal(get(hObject,<span class="string">'BackgroundColor'</span>), get(0,<span class="string">'defaultUicontrolBackgroundColor'</span>))
+    set(hObject,<span class="string">'BackgroundColor'</span>,[.9 .9 .9]);
+<span class="keyword">end</span>
+
+
+<span class="comment">% --- Executes on slider movement.</span>
+<span class="keyword">function</span> slider6_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to slider6 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="comment">% Hints: get(hObject,'Value') returns position of slider</span>
+<span class="comment">%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider</span>
+changeOutput(handles);
+
+
+<span class="comment">% --- Executes during object creation, after setting all properties.</span>
+<span class="keyword">function</span> slider6_CreateFcn(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to slider6 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    empty - handles not created until after all CreateFcns called</span>
+
+<span class="comment">% Hint: slider controls usually have a light gray background.</span>
+<span class="keyword">if</span> isequal(get(hObject,<span class="string">'BackgroundColor'</span>), get(0,<span class="string">'defaultUicontrolBackgroundColor'</span>))
+    set(hObject,<span class="string">'BackgroundColor'</span>,[.9 .9 .9]);
+<span class="keyword">end</span>
+
+
+<span class="comment">% --- Executes on slider movement.</span>
+<span class="keyword">function</span> slider7_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to slider7 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="comment">% Hints: get(hObject,'Value') returns position of slider</span>
+<span class="comment">%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider</span>
+changeOutput(handles);
+
+
+<span class="comment">% --- Executes during object creation, after setting all properties.</span>
+<span class="keyword">function</span> slider7_CreateFcn(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to slider7 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    empty - handles not created until after all CreateFcns called</span>
+
+<span class="comment">% Hint: slider controls usually have a light gray background.</span>
+<span class="keyword">if</span> isequal(get(hObject,<span class="string">'BackgroundColor'</span>), get(0,<span class="string">'defaultUicontrolBackgroundColor'</span>))
+    set(hObject,<span class="string">'BackgroundColor'</span>,[.9 .9 .9]);
+<span class="keyword">end</span>
+
+
+<span class="comment">% --- Executes on slider movement.</span>
+<span class="keyword">function</span> slider8_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to slider8 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="comment">% Hints: get(hObject,'Value') returns position of slider</span>
+<span class="comment">%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider</span>
+changeOutput(handles);
+
+
+<span class="comment">% --- Executes during object creation, after setting all properties.</span>
+<span class="keyword">function</span> slider8_CreateFcn(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to slider8 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    empty - handles not created until after all CreateFcns called</span>
+
+<span class="comment">% Hint: slider controls usually have a light gray background.</span>
+<span class="keyword">if</span> isequal(get(hObject,<span class="string">'BackgroundColor'</span>), get(0,<span class="string">'defaultUicontrolBackgroundColor'</span>))
+    set(hObject,<span class="string">'BackgroundColor'</span>,[.9 .9 .9]);
+<span class="keyword">end</span>
+
+
+<span class="comment">% --- Executes on slider movement.</span>
+<span class="keyword">function</span> slider9_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to slider9 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="comment">% Hints: get(hObject,'Value') returns position of slider</span>
+<span class="comment">%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider</span>
+changeOutput(handles);
+
+
+<span class="comment">% --- Executes during object creation, after setting all properties.</span>
+<span class="keyword">function</span> slider9_CreateFcn(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to slider9 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    empty - handles not created until after all CreateFcns called</span>
+
+<span class="comment">% Hint: slider controls usually have a light gray background.</span>
+<span class="keyword">if</span> isequal(get(hObject,<span class="string">'BackgroundColor'</span>), get(0,<span class="string">'defaultUicontrolBackgroundColor'</span>))
+    set(hObject,<span class="string">'BackgroundColor'</span>,[.9 .9 .9]);
+<span class="keyword">end</span>
+
+
+<span class="comment">% --- Executes on slider movement.</span>
+<span class="keyword">function</span> slider4_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to slider4 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="comment">% Hints: get(hObject,'Value') returns position of slider</span>
+<span class="comment">%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider</span>
+changeOutput(handles);
+
+
+<span class="comment">% --- Executes during object creation, after setting all properties.</span>
+<span class="keyword">function</span> slider4_CreateFcn(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to slider4 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    empty - handles not created until after all CreateFcns called</span>
+
+<span class="comment">% Hint: slider controls usually have a light gray background.</span>
+<span class="keyword">if</span> isequal(get(hObject,<span class="string">'BackgroundColor'</span>), get(0,<span class="string">'defaultUicontrolBackgroundColor'</span>))
+    set(hObject,<span class="string">'BackgroundColor'</span>,[.9 .9 .9]);
+<span class="keyword">end</span>
+
+
+<span class="comment">% --- Executes on button press in btn_zeroall.</span>
+<span class="comment">% set all gain values to zero</span>
+<span class="keyword">function</span> btn_zeroall_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to btn_zeroall (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+set(handles.slider1,<span class="string">'value'</span>,0);
+set(handles.slider2,<span class="string">'value'</span>,0);
+set(handles.slider3,<span class="string">'value'</span>,0);
+set(handles.slider4,<span class="string">'value'</span>,0);
+set(handles.slider5,<span class="string">'value'</span>,0);
+set(handles.slider6,<span class="string">'value'</span>,0);
+set(handles.slider7,<span class="string">'value'</span>,0);
+set(handles.slider8,<span class="string">'value'</span>,0);
+set(handles.slider9,<span class="string">'value'</span>,0);
+changeOutput(handles);
+
+<span class="comment">% --- Executes on button press in btn_maxall.</span>
+<span class="comment">%set all gain values to 20</span>
+<span class="keyword">function</span> btn_maxall_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to btn_maxall (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+set(handles.slider1,<span class="string">'value'</span>,20);
+set(handles.slider2,<span class="string">'value'</span>,20);
+set(handles.slider3,<span class="string">'value'</span>,20);
+set(handles.slider4,<span class="string">'value'</span>,20);
+set(handles.slider5,<span class="string">'value'</span>,20);
+set(handles.slider6,<span class="string">'value'</span>,20);
+set(handles.slider7,<span class="string">'value'</span>,20);
+set(handles.slider8,<span class="string">'value'</span>,20);
+set(handles.slider9,<span class="string">'value'</span>,20);
+changeOutput(handles);
+
+<span class="comment">% --- Executes on button press in btn_lowall.</span>
+<span class="comment">%set all gain values to -20</span>
+<span class="keyword">function</span> btn_lowall_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to btn_lowall (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+set(handles.slider1,<span class="string">'value'</span>,-20);
+set(handles.slider2,<span class="string">'value'</span>,-20);
+set(handles.slider3,<span class="string">'value'</span>,-20);
+set(handles.slider4,<span class="string">'value'</span>,-20);
+set(handles.slider5,<span class="string">'value'</span>,-20);
+set(handles.slider6,<span class="string">'value'</span>,-20);
+set(handles.slider7,<span class="string">'value'</span>,-20);
+set(handles.slider8,<span class="string">'value'</span>,-20);
+set(handles.slider9,<span class="string">'value'</span>,-20);
+changeOutput(handles);
+<span class="comment">% --- Executes during object creation, after setting all properties.</span>
+<span class="keyword">function</span> label_max_CreateFcn(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to label_max (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    empty - handles not created until after all CreateFcns called</span>
+
+
+<span class="comment">% --- Executes on selection change in menu_display.</span>
+<span class="keyword">function</span> menu_display_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to menu_display (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="comment">% Hints: contents = cellstr(get(hObject,'String')) returns menu_display contents as cell array</span>
+<span class="comment">%        contents{get(hObject,'Value')} returns selected item from menu_display</span>
+changeOutput(handles);
+
+<span class="comment">% --- Executes during object creation, after setting all properties.</span>
+<span class="keyword">function</span> menu_display_CreateFcn(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to menu_display (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    empty - handles not created until after all CreateFcns called</span>
+
+<span class="comment">% Hint: popupmenu controls usually have a white background on Windows.</span>
+<span class="comment">%       See ISPC and COMPUTER.</span>
+<span class="keyword">if</span> ispc &amp;&amp; isequal(get(hObject,<span class="string">'BackgroundColor'</span>), get(0,<span class="string">'defaultUicontrolBackgroundColor'</span>))
+    set(hObject,<span class="string">'BackgroundColor'</span>,<span class="string">'white'</span>);
+<span class="keyword">end</span>
+
+
+<span class="comment">% --- Executes when selected object is changed in panel_filters.</span>
+<span class="comment">% choose the type of filters if IIR or FIR</span>
+<span class="comment">% also chooses the the type of FIR filter</span>
+<span class="keyword">function</span> panel_filters_SelectionChangeFcn(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to the selected object in panel_filters</span>
+<span class="comment">% eventdata  structure with the following fields (see UIBUTTONGROUP)</span>
+<span class="comment">%	EventName: string 'SelectionChanged' (read only)</span>
+<span class="comment">%	OldValue: handle of the previously selected object or empty if none was selected</span>
+<span class="comment">%	NewValue: handle of the currently selected object</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+<span class="keyword">if</span>(get(handles.radio_iir,<span class="string">'value'</span>) == get(handles.radio_iir,<span class="string">'max'</span>))
+    set(handles.menu_iir,<span class="string">'enable'</span>,<span class="string">'on'</span>);
+    set(handles.menu_fir,<span class="string">'enable'</span>,<span class="string">'off'</span>);
+<span class="keyword">end</span>
+<span class="keyword">if</span>(get(handles.radio_fir,<span class="string">'value'</span>) == get(handles.radio_fir,<span class="string">'max'</span>))
+    set(handles.menu_iir,<span class="string">'enable'</span>,<span class="string">'off'</span>);
+    set(handles.menu_fir,<span class="string">'enable'</span>,<span class="string">'on'</span>);
+<span class="keyword">end</span>
+<span class="comment">%change the output to match the chosen filter</span>
+changeOutput(handles);
+
+
+<span class="comment">%this functions is responsible for changing the output signal according to</span>
+<span class="comment">%the gain of the sliders and the chosen filter.</span>
+<span class="keyword">function</span> changeOutput(handles)
+
+<span class="comment">%order of the chosen filter</span>
+N =26;
+<span class="comment">%The sampling frequency entered by the user.</span>
+<span class="keyword">global</span> Fs;
+Fs = str2num(get(handles.txt_fs,<span class="string">'string'</span>));
+fileName =get(handles.txt_file,<span class="string">'string'</span>);
+<span class="keyword">global</span> output1 output2 arr_global FS_input;
+<span class="comment">%checks if there's no input signal.</span>
+<span class="keyword">if</span>(~isempty(fileName))
+    input = wavread(fileName);
+    <span class="comment">%a vector to store the bands of frequency for each of the 9 filters</span>
+    cutOff =[170 310 600 1000 3000 6000 12000 14000 16000];
+    <span class="comment">%a vector to stor the sliders handlers</span>
+    sliders = [ handles.slider2 handles.slider3 handles.slider4 handles.slider5 handles.slider6 handles.slider7 handles.slider8 handles.slider9];
+    <span class="comment">%checks if iir filter is chosen</span>
+    <span class="keyword">if</span>(get(handles.radio_iir,<span class="string">'value'</span>) == get(handles.radio_iir,<span class="string">'max'</span>))
+        hd  = fdesign.lowpass(<span class="string">'N,F3dB'</span>, N, 170,Fs );
+        h = design(hd,<span class="string">'butter'</span>);        <span class="comment">%gets the impulse response of the desired iir filter</span>
+        f= filter(h , input);           <span class="comment">%gets the output signal from the filter with impulse resoponse (h) and input (input)</span>
+        <span class="comment">%stores the output f in global variables output1 (after multiplying it with the gain) and output 2</span>
+        output1 = f * 10^(get(handles.slider1 ,<span class="string">'value'</span>)/20);
+        output2 = f;
+        <span class="comment">%stores the output of the low path filter.</span>
+        arr_response{1} = f;
+        <span class="comment">%similir to the above section but with the band filters from 2 to 9</span>
+        <span class="comment">%we store the output from each filter and add it to the output</span>
+        <span class="comment">%signal output1 and output2,</span>
+        <span class="keyword">for</span> i=1:8
+            hd = fdesign.bandpass(<span class="string">'N,F3dB1,F3dB2'</span>, N,cutOff(i) , cutOff(i+1), Fs);
+            h = design(hd,<span class="string">'butter'</span>);
+            f= filter(h,input);
+            arr_response{i+1} = f;
+            output1 = output1 + f * (10^(get(sliders(i) ,<span class="string">'value'</span>)/20));
+            output2 = output2 + f;
+        <span class="keyword">end</span>
+        <span class="comment">%%global equal part</span>
+        arr_global = arr_response;
+
+    <span class="keyword">end</span>
+    <span class="comment">%checks if FIR filter was chosen</span>
+    <span class="keyword">if</span>(get(handles.radio_fir,<span class="string">'value'</span>) == get(handles.radio_fir,<span class="string">'max'</span>))
+      <span class="comment">%get the id of the type of FIR fiter.</span>
+      choice = get(handles.menu_fir,<span class="string">'value'</span>);
+      <span class="keyword">if</span>(choice == 1)
+        <span class="comment">%if choice is 1 the equiripple FIR filter is chosen</span>
+        <span class="comment">%first design the low path filter and similar to IIR filter we</span>
+        <span class="comment">%adjust the output signal and store it with gain and without it</span>
+        <span class="comment">%calculate the coef of the filter.</span>
+        h  = firpm(N, [0 170 171 Fs/2]/(Fs/2), [1 1 0 0], [1 1], {20});
+        f= filter(h ,1, input);
+        <span class="comment">%stores the output f in global variables output1 (after multiplying it with the gain) and output 2</span>
+        output1 = f * 10^(get(handles.slider1 ,<span class="string">'value'</span>)/20);
+        output2 = f;
+        arr_response{1} = f;
+        <span class="keyword">for</span> i=1:8
+           <span class="comment">%similir to the above section but with the band filters from 2 to 9</span>
+           <span class="comment">%we store the output from each filter and add it to the output</span>
+           <span class="comment">%signal output1 and output2</span>
+           <span class="comment">%calculate the coef of the filter.</span>
+            h = firpm(N, [0 cutOff(i) cutOff(i)+1 cutOff(i+1) cutOff(i+1)+1 Fs/2]/(Fs/2), [0 0 1 1 0 <span class="keyword">...</span>
+           0], [1 1 1], {20});
+            f= filter(h ,1, input);
+            arr_response{i+1} = f;
+            output1 = output1 + f * (10^(get(sliders(i) ,<span class="string">'value'</span>)/20));
+            output2 = output2 + f;
+        <span class="keyword">end</span>
+        <span class="comment">%%global equal part</span>
+        arr_global = arr_response;
+      <span class="keyword">end</span>
+      <span class="keyword">if</span>(choice == 2)
+        <span class="comment">%if the choice is 2 the FIR chosen is least square</span>
+        <span class="comment">%create a low path least square filter with 170 pass frequency and</span>
+        <span class="comment">%171 stop freq, and weight stop and pass equal to 1.</span>
+        <span class="comment">%calculate the coef of the desired filter.</span>
+        h  = firls(N, [0 170 171 Fs/2]/(Fs/2), [1 1 0 0], [1 1]);
+        <span class="comment">%get the output of the low path filter and store it</span>
+        f= filter(h ,1, input);
+        output1 = f * 10^(get(handles.slider1 ,<span class="string">'value'</span>)/20);
+        output2 = f;
+        arr_response{1} = f;
+        <span class="keyword">for</span> i=1:8
+            <span class="comment">%calculate the coef of desired filter for each one of the 8 band filters.</span>
+            h = firls(N, [0  cutOff(i) cutOff(i)+1 cutOff(i+1) cutOff(i+1)+1 Fs/2]/(Fs/2), [0 0 1 1 0 <span class="keyword">...</span>
+           0], [1 1 1]);
+            <span class="comment">%get the output of the low path filter and store it</span>
+            f= filter(h ,1, input);
+            arr_response{i+1} = f;
+            output1 = output1 + f * (10^(get(sliders(i) ,<span class="string">'value'</span>)/20));
+            output2 = output2 + f;
+        <span class="keyword">end</span>
+        <span class="comment">%%global equal part</span>
+        arr_global = arr_response;
+
+      <span class="keyword">end</span>
+      <span class="keyword">if</span>(choice == 3)
+        <span class="comment">%if the choice is 3 the FIR chosen is window of type rectangular</span>
+        <span class="comment">%create a low path window of type rectangular filter with 170 pass frequency and</span>
+        <span class="comment">%171 stop freq, and weight stop and pass equal to 1.</span>
+        <span class="comment">%calculate the coef of the desired filter.</span>
+        win = rectwin(N+1);
+        flag = <span class="string">'scale'</span>;
+
+        h  = fir1(N, 170/(Fs/2), <span class="string">'low'</span>, win, flag);
+        f= filter(h ,1, input);
+        output1 = f * 10^(get(handles.slider1 ,<span class="string">'value'</span>)/20);
+        output2 = f;
+        arr_response{1} = f;
+        <span class="keyword">for</span> i=1:8
+            <span class="comment">%calculate the coef of desired filter for each one of the 8</span>
+            <span class="comment">%band filters.</span>
+            h = fir1(N, [cutOff(i) cutOff(i+1)]/(Fs/2), <span class="string">'bandpass'</span>, win, flag);
+            f= filter(h ,1, input);
+            arr_response{i+1} = f;
+            output1 = output1 + f * (10^(get(sliders(i) ,<span class="string">'value'</span>)/20));
+            output2 = output2 + f;
+        <span class="keyword">end</span>
+        <span class="comment">%%global equal part</span>
+        arr_global = arr_response;
+
+      <span class="keyword">end</span>
+      <span class="keyword">if</span>(choice == 4)
+        <span class="comment">%if the choice is 4 the FIR chosen is window of type chebychev</span>
+        <span class="comment">%create a low path window of type chebychev filter with 170 pass frequency and</span>
+        <span class="comment">%171 stop freq, and weight stop and pass equal to 1.</span>
+        <span class="comment">%calculate the coef of the desired filter.</span>
+        SidelobeAtten = 100;
+        win = chebwin(N+1, SidelobeAtten);
+        flag = <span class="string">'scale'</span>;
+        h  = fir1(N, 170/(Fs/2), <span class="string">'low'</span>, win, flag);
+        f= filter(h ,1, input);
+        output1 = f * 10^(get(handles.slider1 ,<span class="string">'value'</span>)/20);
+        output2 = f;
+        arr_response{1} = f;
+        <span class="keyword">for</span> i=1:8
+            <span class="comment">%calculate the coef of desired filter for each one of the 8</span>
+            <span class="comment">%band filters.</span>
+            h = fir1(N, [cutOff(i) cutOff(i+1)]/(Fs/2), <span class="string">'bandpass'</span>, win, flag);
+            f= filter(h ,1, input);
+            arr_response{i+1} = f;
+            output1 = output1 + f * (10^(get(sliders(i) ,<span class="string">'value'</span>)/20));
+            output2 = output2 + f;
+        <span class="keyword">end</span>
+        <span class="comment">%%global equal part</span>
+        arr_global = arr_response;
+
+      <span class="keyword">end</span>
+      <span class="keyword">if</span>(choice == 5)
+        <span class="comment">%if the choice is 4 the FIR chosen is window of type Hamming</span>
+        <span class="comment">%create a low path window of type Hamming filter with 170 pass frequency and</span>
+        <span class="comment">%171 stop freq, and weight stop and pass equal to 1.</span>
+        <span class="comment">%calculate the coef of the desired filter.</span>
+        win = hamming(N+1 );
+        flag = <span class="string">'scale'</span>;
+        h  = fir1(N, 170/(Fs/2), <span class="string">'low'</span>, win, flag);
+        f= filter(h ,1, input);
+        output1 = f * 10^(get(handles.slider1 ,<span class="string">'value'</span>)/20);
+        output2 = f;
+        arr_response{1} = f;
+        <span class="keyword">for</span> i=1:8
+            <span class="comment">%calculate the coef of desired filter for each one of the 8</span>
+            <span class="comment">%band filters.</span>
+            h = fir1(N, [cutOff(i) cutOff(i+1)]/(Fs/2), <span class="string">'bandpass'</span>, win, flag);
+            f= filter(h ,1, input);
+            arr_response{i+1} = f;
+            output1 = output1 + f * (10^(get(sliders(i) ,<span class="string">'value'</span>)/20));
+            output2 = output2 + f;
+        <span class="keyword">end</span>
+        <span class="comment">%%global equal part</span>
+        arr_global = arr_response;
+
+      <span class="keyword">end</span>
+      <span class="keyword">if</span>(choice == 6)
+         <span class="comment">%if the choice is 4 the FIR chosen is window of type Hamming</span>
+        <span class="comment">%create a low path window of type Hamming filter with 170 pass frequency and</span>
+        <span class="comment">%171 stop freq, and weight stop and pass equal to 1.</span>
+        <span class="comment">%calculate the coef of the desired filter.</span>
+        win = blackmanharris(N+1);
+        flag = <span class="string">'scale'</span>;
+        h  = fir1(N, 170/(Fs/2), <span class="string">'low'</span>, win, flag);
+        f= filter(h ,1, input);
+        output1 = f * 10^(get(handles.slider1 ,<span class="string">'value'</span>)/20);
+        output2 = f ;
+        arr_response{1} = f;
+        <span class="keyword">for</span> i=1:8
+            <span class="comment">%calculate the coef of desired filter for each one of the 8</span>
+            <span class="comment">%band filters.</span>
+            h = fir1(N, [cutOff(i) cutOff(i+1)]/(Fs/2), <span class="string">'bandpass'</span>, win, flag);
+            f= filter(h ,1, input);
+            output1 = output1 + f * (10^(get(sliders(i) ,<span class="string">'value'</span>)/20));
+            output2 = output2 + f;
+            arr_response{i+1} = f;
+        <span class="keyword">end</span>
+        <span class="comment">%%global equal part</span>
+        arr_global = arr_response;
+
+      <span class="keyword">end</span>
+    <span class="keyword">end</span>
+    <span class="comment">%%plot part</span>
+    <span class="keyword">if</span>(get(handles.menu_display,<span class="string">'value'</span>)== 3)
+        <span class="comment">%plot output with gains</span>
+        plot_in_gui(handles,output1,Fs);
+    <span class="keyword">end</span>
+    <span class="keyword">if</span>(get(handles.menu_display,<span class="string">'value'</span>)== 2)
+        <span class="comment">%plot output without gains</span>
+       plot_in_gui(handles,output2,Fs);
+    <span class="keyword">end</span>
+    <span class="keyword">if</span>(get(handles.menu_display,<span class="string">'value'</span>)== 1)
+        <span class="comment">%plot input without modification</span>
+        plot_in_gui(handles,input,FS_input);
+    <span class="keyword">end</span>
+
+    drawnow;
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> txt_fs_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to txt_fs (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="comment">% Hints: get(hObject,'String') returns contents of txt_fs as text</span>
+<span class="comment">%        str2double(get(hObject,'String')) returns contents of txt_fs as a double</span>
+changeOutput(handles);
+
+
+<span class="comment">% --- Executes during object creation, after setting all properties.</span>
+<span class="keyword">function</span> txt_fs_CreateFcn(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to txt_fs (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    empty - handles not created until after all CreateFcns called</span>
+
+<span class="comment">% Hint: edit controls usually have a white background on Windows.</span>
+<span class="comment">%       See ISPC and COMPUTER.</span>
+<span class="keyword">if</span> ispc &amp;&amp; isequal(get(hObject,<span class="string">'BackgroundColor'</span>), get(0,<span class="string">'defaultUicontrolBackgroundColor'</span>))
+    set(hObject,<span class="string">'BackgroundColor'</span>,<span class="string">'white'</span>);
+<span class="keyword">end</span>
+
+
+<span class="comment">% --- Executes on key press with focus on btn_maxall and none of its controls.</span>
+<span class="keyword">function</span> btn_maxall_KeyPressFcn(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to btn_maxall (see GCBO)</span>
+<span class="comment">% eventdata  structure with the following fields (see UICONTROL)</span>
+<span class="comment">%	Key: name of the key that was pressed, in lower case</span>
+<span class="comment">%	Character: character interpretation of the key(s) that was pressed</span>
+<span class="comment">%	Modifier: name(s) of the modifier key(s) (i.e., control, shift) pressed</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+
+<span class="comment">% --- Executes on button press in btn_plots.</span>
+<span class="keyword">function</span> btn_plots_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to btn_plots (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+plots_gui;
+<span class="comment">%-------plots sound</span>
+<span class="keyword">function</span> plot_in_gui(handles,output,Fs)
+Nsamps = length(output);
+t = (1/Fs)*(1:Nsamps);          <span class="comment">%Prepare time data for plot</span>
+
+axes(handles.axes_time);
+plot(t, output);
+xlim([0 1/Fs*Nsamps]);
+
+axes(handles.axes_mag);
+<span class="comment">%y_fft = abs(fftshift(fft(output)));            %Retain Magnitude</span>
+y_fft = fft(output);
+y_fft = y_fft(1:Nsamps/2);      <span class="comment">%Discard Half of Points</span>
+<span class="comment">%f = Fs*(0:Nsamps-1)/Nsamps*2;</span>
+
+f = Fs*(0:Nsamps/2-1)/Nsamps;   <span class="comment">%Prepare freq data for plot</span>
+plot(f, abs(y_fft));
+xlim([0 20000]);
+</pre><img vspace="5" hspace="5" src="main_gui_files/main_gui_01.png" alt=""> <p class="footer"><br>
+      Published with MATLAB&reg; 7.12<br></p></div><!--
+##### SOURCE BEGIN #####
+function varargout = main_gui(varargin)
+% MAIN_GUI MATLAB code for main_gui.fig
+%      MAIN_GUI, by itself, creates a new MAIN_GUI or raises the existing
+%      singleton*.
+%
+%      H = MAIN_GUI returns the handle to a new MAIN_GUI or the handle to
+%      the existing singleton*.
+%
+%      MAIN_GUI('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in MAIN_GUI.M with the given input arguments.
+%
+%      MAIN_GUI('Property','Value',...) creates a new MAIN_GUI or raises the
+%      existing singleton*.  Starting from the left, property value pairs are
+%      applied to the GUI before main_gui_OpeningFcn gets called.  An
+%      unrecognized property name or invalid value makes property application
+%      stop.  All inputs are passed to main_gui_OpeningFcn via varargin.
+%
+%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
+%      instance to run (singleton)".
+%
+% See also: GUIDE, GUIDATA, GUIHANDLES
+ 
+% Edit the above text to modify the response to help main_gui
+ 
+% Last Modified by GUIDE v2.5 26-Jan-2016 00:52:47
+ 
+% Begin initialization code - DO NOT EDIT
+gui_Singleton = 1;
+gui_State = struct('gui_Name',       mfilename, ...
+                   'gui_Singleton',  gui_Singleton, ...
+                   'gui_OpeningFcn', @main_gui_OpeningFcn, ...
+                   'gui_OutputFcn',  @main_gui_OutputFcn, ...
+                   'gui_LayoutFcn',  [] , ...
+                   'gui_Callback',   []);
+if nargin && ischar(varargin{1})
+    gui_State.gui_Callback = str2func(varargin{1});
+end
+ 
+if nargout
+    [varargout{1:nargout}] = gui_mainfcn(gui_State, varargin{:});
+else
+    gui_mainfcn(gui_State, varargin{:});
+end
+% End initialization code - DO NOT EDIT
+ 
+ 
+% REPLACE_WITH_DASH_DASH- Executes just before main_gui is made visible.
+function main_gui_OpeningFcn(hObject, eventdata, handles, varargin)
+% This function has no output args, see OutputFcn.
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+% varargin   command line arguments to main_gui (see VARARGIN)
+ 
+% Choose default command line output for main_gui
+handles.output = hObject;
+ 
+% Update handles structure
+guidata(hObject, handles);
+ 
+% UIWAIT makes main_gui wait for user response (see UIRESUME)
+% uiwait(handles.figure1);
+ 
+ 
+% REPLACE_WITH_DASH_DASH- Outputs from this function are returned to the command line.
+function varargout = main_gui_OutputFcn(hObject, eventdata, handles) 
+% varargout  cell array for returning output args (see VARARGOUT);
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+ 
+% Get default command line output from handles structure
+varargout{1} = handles.output;
+ 
+ 
+ 
+% REPLACE_WITH_DASH_DASH- Executes on selection change in menu_iir.
+function menu_iir_Callback(hObject, eventdata, handles)
+% hObject    handle to menu_iir (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+ 
+% Hints: contents = cellstr(get(hObject,'String')) returns menu_iir contents as cell array
+%        contents{get(hObject,'Value')} returns selected item from menu_iir
+ 
+ 
+% REPLACE_WITH_DASH_DASH- Executes during object creation, after setting all properties.
+function menu_iir_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to menu_iir (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+ 
+% Hint: popupmenu controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+ 
+ 
+ 
+ 
+% REPLACE_WITH_DASH_DASH- Executes on selection change in menu_fir.
+function menu_fir_Callback(hObject, eventdata, handles)
+% hObject    handle to menu_fir (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+ 
+% Hints: contents = cellstr(get(hObject,'String')) returns menu_fir contents as cell array
+%        contents{get(hObject,'Value')} returns selected item from menu_fir
+ 
+ 
+% REPLACE_WITH_DASH_DASH- Executes during object creation, after setting all properties.
+function menu_fir_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to menu_fir (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+ 
+% Hint: popupmenu controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+ 
+ 
+ 
+function txt_file_Callback(hObject, eventdata, handles)
+% hObject    handle to txt_file (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+ 
+% Hints: get(hObject,'String') returns contents of txt_file as text
+%        str2double(get(hObject,'String')) returns contents of txt_file as a double
+ 
+ 
+% REPLACE_WITH_DASH_DASH- Executes during object creation, after setting all properties.
+function txt_file_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to txt_file (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+ 
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+ 
+ 
+% REPLACE_WITH_DASH_DASH- Executes on button press in btn_browse.
+function btn_browse_Callback(hObject, eventdata, handles)
+% hObject    handle to btn_browse (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%get input file name
+global FS_input;
+[filename,filepath] = uigetfile('*.wav','Select the wave file');
+filename = strcat(filepath,filename);
+set(handles.txt_file,'string',filename);
+if(~isempty(filename))
+    set(handles.menu_display,'value',1);
+    [y,Fs] = wavread(filename);
+    FS_input = Fs;
+    set(handles.txt_fs,'string',Fs);
+end
+changeOutput(handles);              %calc the new output signal
+ 
+% REPLACE_WITH_DASH_DASH- Executes on button press in btn_play.
+function btn_play_Callback(hObject, eventdata, handles)
+% hObject    handle to btn_play (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%calc the output signal after play butting is pressed
+changeOutput(handles);              
+global output2 output1 Fs;
+wavplay(output1,Fs,'async');        %play output signal (with gain)
+ 
+% REPLACE_WITH_DASH_DASH- Executes on button press in btn_stop.
+function btn_stop_Callback(hObject, eventdata, handles)
+% hObject    handle to btn_stop (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+clear playsnd;                      %stop the output signal
+ 
+% REPLACE_WITH_DASH_DASH- Executes on button press in btn_save.
+function btn_save_Callback(hObject, eventdata, handles)
+% hObject    handle to btn_save (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+[FileName,PathName] = uiputfile;    %get the selected file name and path
+global output1 Fs;
+wavWrite(output1,Fs,strcat(PathName,FileName)); %store output in a wav file
+ 
+% REPLACE_WITH_DASH_DASH- Executes on slider movement.
+function slider1_Callback(hObject, eventdata, handles)
+% hObject    handle to slider1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+ 
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+changeOutput(handles);          
+ 
+ 
+ 
+% REPLACE_WITH_DASH_DASH- Executes during object creation, after setting all properties.
+function slider1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+ 
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+ 
+ 
+% REPLACE_WITH_DASH_DASH- Executes on slider movement.
+function slider2_Callback(hObject, eventdata, handles)
+% hObject    handle to slider2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+ 
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+changeOutput(handles);
+ 
+% REPLACE_WITH_DASH_DASH- Executes during object creation, after setting all properties.
+function slider2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+ 
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+ 
+ 
+% REPLACE_WITH_DASH_DASH- Executes on slider movement.
+function slider3_Callback(hObject, eventdata, handles)
+% hObject    handle to slider3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+ 
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+changeOutput(handles);
+ 
+% REPLACE_WITH_DASH_DASH- Executes during object creation, after setting all properties.
+function slider3_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+ 
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+ 
+ 
+% REPLACE_WITH_DASH_DASH- Executes on slider movement.
+function slider5_Callback(hObject, eventdata, handles)
+% hObject    handle to slider5 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+ 
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+changeOutput(handles);
+ 
+ 
+% REPLACE_WITH_DASH_DASH- Executes during object creation, after setting all properties.
+function slider5_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider5 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+ 
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+ 
+ 
+% REPLACE_WITH_DASH_DASH- Executes on slider movement.
+function slider6_Callback(hObject, eventdata, handles)
+% hObject    handle to slider6 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+ 
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+changeOutput(handles);
+ 
+ 
+% REPLACE_WITH_DASH_DASH- Executes during object creation, after setting all properties.
+function slider6_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider6 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+ 
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+ 
+ 
+% REPLACE_WITH_DASH_DASH- Executes on slider movement.
+function slider7_Callback(hObject, eventdata, handles)
+% hObject    handle to slider7 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+ 
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+changeOutput(handles);
+ 
+ 
+% REPLACE_WITH_DASH_DASH- Executes during object creation, after setting all properties.
+function slider7_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider7 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+ 
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+ 
+ 
+% REPLACE_WITH_DASH_DASH- Executes on slider movement.
+function slider8_Callback(hObject, eventdata, handles)
+% hObject    handle to slider8 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+ 
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+changeOutput(handles);
+ 
+ 
+% REPLACE_WITH_DASH_DASH- Executes during object creation, after setting all properties.
+function slider8_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider8 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+ 
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+ 
+ 
+% REPLACE_WITH_DASH_DASH- Executes on slider movement.
+function slider9_Callback(hObject, eventdata, handles)
+% hObject    handle to slider9 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+ 
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+changeOutput(handles);
+ 
+ 
+% REPLACE_WITH_DASH_DASH- Executes during object creation, after setting all properties.
+function slider9_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider9 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+ 
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+ 
+ 
+% REPLACE_WITH_DASH_DASH- Executes on slider movement.
+function slider4_Callback(hObject, eventdata, handles)
+% hObject    handle to slider4 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+ 
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+changeOutput(handles);
+ 
+ 
+% REPLACE_WITH_DASH_DASH- Executes during object creation, after setting all properties.
+function slider4_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider4 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+ 
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+ 
+ 
+% REPLACE_WITH_DASH_DASH- Executes on button press in btn_zeroall.
+% set all gain values to zero
+function btn_zeroall_Callback(hObject, eventdata, handles)
+% hObject    handle to btn_zeroall (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+set(handles.slider1,'value',0);
+set(handles.slider2,'value',0);
+set(handles.slider3,'value',0);
+set(handles.slider4,'value',0);
+set(handles.slider5,'value',0);
+set(handles.slider6,'value',0);
+set(handles.slider7,'value',0);
+set(handles.slider8,'value',0);
+set(handles.slider9,'value',0);
+changeOutput(handles);
+ 
+% REPLACE_WITH_DASH_DASH- Executes on button press in btn_maxall.
+%set all gain values to 20
+function btn_maxall_Callback(hObject, eventdata, handles)
+% hObject    handle to btn_maxall (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+set(handles.slider1,'value',20);
+set(handles.slider2,'value',20);
+set(handles.slider3,'value',20);
+set(handles.slider4,'value',20);
+set(handles.slider5,'value',20);
+set(handles.slider6,'value',20);
+set(handles.slider7,'value',20);
+set(handles.slider8,'value',20);
+set(handles.slider9,'value',20);
+changeOutput(handles);
+ 
+% REPLACE_WITH_DASH_DASH- Executes on button press in btn_lowall.
+%set all gain values to -20
+function btn_lowall_Callback(hObject, eventdata, handles)
+% hObject    handle to btn_lowall (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+set(handles.slider1,'value',-20);
+set(handles.slider2,'value',-20);
+set(handles.slider3,'value',-20);
+set(handles.slider4,'value',-20);
+set(handles.slider5,'value',-20);
+set(handles.slider6,'value',-20);
+set(handles.slider7,'value',-20);
+set(handles.slider8,'value',-20);
+set(handles.slider9,'value',-20);
+changeOutput(handles);
+% REPLACE_WITH_DASH_DASH- Executes during object creation, after setting all properties.
+function label_max_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to label_max (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+ 
+ 
+% REPLACE_WITH_DASH_DASH- Executes on selection change in menu_display.
+function menu_display_Callback(hObject, eventdata, handles)
+% hObject    handle to menu_display (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+ 
+% Hints: contents = cellstr(get(hObject,'String')) returns menu_display contents as cell array
+%        contents{get(hObject,'Value')} returns selected item from menu_display
+changeOutput(handles);
+ 
+% REPLACE_WITH_DASH_DASH- Executes during object creation, after setting all properties.
+function menu_display_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to menu_display (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+ 
+% Hint: popupmenu controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+ 
+ 
+% REPLACE_WITH_DASH_DASH- Executes when selected object is changed in panel_filters.
+% choose the type of filters if IIR or FIR
+% also chooses the the type of FIR filter
+function panel_filters_SelectionChangeFcn(hObject, eventdata, handles)
+% hObject    handle to the selected object in panel_filters 
+% eventdata  structure with the following fields (see UIBUTTONGROUP)
+%	EventName: string 'SelectionChanged' (read only)
+%	OldValue: handle of the previously selected object or empty if none was selected
+%	NewValue: handle of the currently selected object
+% handles    structure with handles and user data (see GUIDATA)
+if(get(handles.radio_iir,'value') == get(handles.radio_iir,'max'))
+    set(handles.menu_iir,'enable','on');
+    set(handles.menu_fir,'enable','off');
+end
+if(get(handles.radio_fir,'value') == get(handles.radio_fir,'max'))
+    set(handles.menu_iir,'enable','off');
+    set(handles.menu_fir,'enable','on');
+end
+%change the output to match the chosen filter
+changeOutput(handles);
+ 
+ 
+%this functions is responsible for changing the output signal according to
+%the gain of the sliders and the chosen filter.
+function changeOutput(handles)
+ 
+%order of the chosen filter
+N =26;
+%The sampling frequency entered by the user.
+global Fs;
+Fs = str2num(get(handles.txt_fs,'string'));
+fileName =get(handles.txt_file,'string');
+global output1 output2 arr_global FS_input;
+%checks if there's no input signal.
+if(~isempty(fileName))
+    input = wavread(fileName);
+    %a vector to store the bands of frequency for each of the 9 filters
+    cutOff =[170 310 600 1000 3000 6000 12000 14000 16000];
+    %a vector to stor the sliders handlers
+    sliders = [ handles.slider2 handles.slider3 handles.slider4 handles.slider5 handles.slider6 handles.slider7 handles.slider8 handles.slider9];
+    %checks if iir filter is chosen
+    if(get(handles.radio_iir,'value') == get(handles.radio_iir,'max'))
+        hd  = fdesign.lowpass('N,F3dB', N, 170,Fs );
+        h = design(hd,'butter');        %gets the impulse response of the desired iir filter
+        f= filter(h , input);           %gets the output signal from the filter with impulse resoponse (h) and input (input)
+        %stores the output f in global variables output1 (after multiplying it with the gain) and output 2
+        output1 = f * 10^(get(handles.slider1 ,'value')/20);
+        output2 = f;
+        %stores the output of the low path filter.
+        arr_response{1} = f;
+        %similir to the above section but with the band filters from 2 to 9
+        %we store the output from each filter and add it to the output 
+        %signal output1 and output2, 
+        for i=1:8
+            hd = fdesign.bandpass('N,F3dB1,F3dB2', N,cutOff(i) , cutOff(i+1), Fs);
+            h = design(hd,'butter');
+            f= filter(h,input);
+            arr_response{i+1} = f;
+            output1 = output1 + f * (10^(get(sliders(i) ,'value')/20));
+            output2 = output2 + f;
+        end
+        %%global equal part
+        arr_global = arr_response;
+ 
+    end
+    %checks if FIR filter was chosen
+    if(get(handles.radio_fir,'value') == get(handles.radio_fir,'max'))
+      %get the id of the type of FIR fiter.
+      choice = get(handles.menu_fir,'value'); 
+      if(choice == 1)
+        %if choice is 1 the equiripple FIR filter is chosen
+        %first design the low path filter and similar to IIR filter we
+        %adjust the output signal and store it with gain and without it
+        %calculate the coef of the filter.
+        h  = firpm(N, [0 170 171 Fs/2]/(Fs/2), [1 1 0 0], [1 1], {20});
+        f= filter(h ,1, input);
+        %stores the output f in global variables output1 (after multiplying it with the gain) and output 2
+        output1 = f * 10^(get(handles.slider1 ,'value')/20);
+        output2 = f;
+        arr_response{1} = f;        
+        for i=1:8
+           %similir to the above section but with the band filters from 2 to 9
+           %we store the output from each filter and add it to the output 
+           %signal output1 and output2 
+           %calculate the coef of the filter.
+            h = firpm(N, [0 cutOff(i) cutOff(i)+1 cutOff(i+1) cutOff(i+1)+1 Fs/2]/(Fs/2), [0 0 1 1 0 ...
+           0], [1 1 1], {20});
+            f= filter(h ,1, input);
+            arr_response{i+1} = f;
+            output1 = output1 + f * (10^(get(sliders(i) ,'value')/20));
+            output2 = output2 + f;
+        end
+        %%global equal part
+        arr_global = arr_response;
+      end
+      if(choice == 2)
+        %if the choice is 2 the FIR chosen is least square
+        %create a low path least square filter with 170 pass frequency and
+        %171 stop freq, and weight stop and pass equal to 1.
+        %calculate the coef of the desired filter.
+        h  = firls(N, [0 170 171 Fs/2]/(Fs/2), [1 1 0 0], [1 1]);
+        %get the output of the low path filter and store it
+        f= filter(h ,1, input);
+        output1 = f * 10^(get(handles.slider1 ,'value')/20);
+        output2 = f;
+        arr_response{1} = f;        
+        for i=1:8
+            %calculate the coef of desired filter for each one of the 8 band filters.
+            h = firls(N, [0  cutOff(i) cutOff(i)+1 cutOff(i+1) cutOff(i+1)+1 Fs/2]/(Fs/2), [0 0 1 1 0 ...
+           0], [1 1 1]);       
+            %get the output of the low path filter and store it
+            f= filter(h ,1, input);
+            arr_response{i+1} = f;            
+            output1 = output1 + f * (10^(get(sliders(i) ,'value')/20));
+            output2 = output2 + f;
+        end
+        %%global equal part
+        arr_global = arr_response;
+ 
+      end
+      if(choice == 3)
+        %if the choice is 3 the FIR chosen is window of type rectangular
+        %create a low path window of type rectangular filter with 170 pass frequency and
+        %171 stop freq, and weight stop and pass equal to 1.
+        %calculate the coef of the desired filter.
+        win = rectwin(N+1);
+        flag = 'scale';
+ 
+        h  = fir1(N, 170/(Fs/2), 'low', win, flag);
+        f= filter(h ,1, input);
+        output1 = f * 10^(get(handles.slider1 ,'value')/20);
+        output2 = f;
+        arr_response{1} = f;        
+        for i=1:8
+            %calculate the coef of desired filter for each one of the 8
+            %band filters.
+            h = fir1(N, [cutOff(i) cutOff(i+1)]/(Fs/2), 'bandpass', win, flag);
+            f= filter(h ,1, input);
+            arr_response{i+1} = f;            
+            output1 = output1 + f * (10^(get(sliders(i) ,'value')/20));
+            output2 = output2 + f;
+        end
+        %%global equal part
+        arr_global = arr_response;
+ 
+      end
+      if(choice == 4)
+        %if the choice is 4 the FIR chosen is window of type chebychev
+        %create a low path window of type chebychev filter with 170 pass frequency and
+        %171 stop freq, and weight stop and pass equal to 1.
+        %calculate the coef of the desired filter.
+        SidelobeAtten = 100;
+        win = chebwin(N+1, SidelobeAtten);
+        flag = 'scale';
+        h  = fir1(N, 170/(Fs/2), 'low', win, flag);
+        f= filter(h ,1, input);
+        output1 = f * 10^(get(handles.slider1 ,'value')/20);
+        output2 = f;
+        arr_response{1} = f;        
+        for i=1:8
+            %calculate the coef of desired filter for each one of the 8
+            %band filters.
+            h = fir1(N, [cutOff(i) cutOff(i+1)]/(Fs/2), 'bandpass', win, flag);
+            f= filter(h ,1, input);
+            arr_response{i+1} = f;            
+            output1 = output1 + f * (10^(get(sliders(i) ,'value')/20));
+            output2 = output2 + f;
+        end
+        %%global equal part
+        arr_global = arr_response;
+ 
+      end
+      if(choice == 5)
+        %if the choice is 4 the FIR chosen is window of type Hamming
+        %create a low path window of type Hamming filter with 170 pass frequency and
+        %171 stop freq, and weight stop and pass equal to 1.
+        %calculate the coef of the desired filter.
+        win = hamming(N+1 );
+        flag = 'scale';
+        h  = fir1(N, 170/(Fs/2), 'low', win, flag);
+        f= filter(h ,1, input);
+        output1 = f * 10^(get(handles.slider1 ,'value')/20);
+        output2 = f;
+        arr_response{1} = f;        
+        for i=1:8
+            %calculate the coef of desired filter for each one of the 8
+            %band filters.
+            h = fir1(N, [cutOff(i) cutOff(i+1)]/(Fs/2), 'bandpass', win, flag);
+            f= filter(h ,1, input);
+            arr_response{i+1} = f;            
+            output1 = output1 + f * (10^(get(sliders(i) ,'value')/20));
+            output2 = output2 + f;
+        end
+        %%global equal part
+        arr_global = arr_response;
+ 
+      end
+      if(choice == 6)
+         %if the choice is 4 the FIR chosen is window of type Hamming
+        %create a low path window of type Hamming filter with 170 pass frequency and
+        %171 stop freq, and weight stop and pass equal to 1.
+        %calculate the coef of the desired filter.
+        win = blackmanharris(N+1);
+        flag = 'scale';
+        h  = fir1(N, 170/(Fs/2), 'low', win, flag);
+        f= filter(h ,1, input);
+        output1 = f * 10^(get(handles.slider1 ,'value')/20);
+        output2 = f ;
+        arr_response{1} = f;        
+        for i=1:8
+            %calculate the coef of desired filter for each one of the 8
+            %band filters.
+            h = fir1(N, [cutOff(i) cutOff(i+1)]/(Fs/2), 'bandpass', win, flag);
+            f= filter(h ,1, input);
+            output1 = output1 + f * (10^(get(sliders(i) ,'value')/20));
+            output2 = output2 + f;
+            arr_response{i+1} = f;            
+        end
+        %%global equal part
+        arr_global = arr_response;
+ 
+      end
+    end
+    %%plot part
+    if(get(handles.menu_display,'value')== 3)
+        %plot output with gains
+        plot_in_gui(handles,output1,Fs);
+    end
+    if(get(handles.menu_display,'value')== 2)
+        %plot output without gains
+       plot_in_gui(handles,output2,Fs);
+    end
+    if(get(handles.menu_display,'value')== 1)
+        %plot input without modification
+        plot_in_gui(handles,input,FS_input);
+    end
+ 
+    drawnow;
+end
+ 
+function txt_fs_Callback(hObject, eventdata, handles)
+% hObject    handle to txt_fs (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+ 
+% Hints: get(hObject,'String') returns contents of txt_fs as text
+%        str2double(get(hObject,'String')) returns contents of txt_fs as a double
+changeOutput(handles);
+ 
+ 
+% REPLACE_WITH_DASH_DASH- Executes during object creation, after setting all properties.
+function txt_fs_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to txt_fs (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+ 
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+ 
+ 
+% REPLACE_WITH_DASH_DASH- Executes on key press with focus on btn_maxall and none of its controls.
+function btn_maxall_KeyPressFcn(hObject, eventdata, handles)
+% hObject    handle to btn_maxall (see GCBO)
+% eventdata  structure with the following fields (see UICONTROL)
+%	Key: name of the key that was pressed, in lower case
+%	Character: character interpretation of the key(s) that was pressed
+%	Modifier: name(s) of the modifier key(s) (i.e., control, shift) pressed
+% handles    structure with handles and user data (see GUIDATA)
+ 
+ 
+% REPLACE_WITH_DASH_DASH- Executes on button press in btn_plots.
+function btn_plots_Callback(hObject, eventdata, handles)
+% hObject    handle to btn_plots (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+plots_gui;
+%REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-plots sound 
+function plot_in_gui(handles,output,Fs)
+Nsamps = length(output);
+t = (1/Fs)*(1:Nsamps);          %Prepare time data for plot
+ 
+axes(handles.axes_time);
+plot(t, output);
+xlim([0 1/Fs*Nsamps]);
+ 
+axes(handles.axes_mag);
+%y_fft = abs(fftshift(fft(output)));            %Retain Magnitude
+y_fft = fft(output);
+y_fft = y_fft(1:Nsamps/2);      %Discard Half of Points
+%f = Fs*(0:Nsamps-1)/Nsamps*2;
+ 
+f = Fs*(0:Nsamps/2-1)/Nsamps;   %Prepare freq data for plot
+plot(f, abs(y_fft));
+xlim([0 20000]);
+##### SOURCE END #####
+--></body></html>
